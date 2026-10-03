@@ -68,3 +68,11 @@ Last 30 days:
 - No previous Romanian authentication
 
 ## Evidence Analysis
+
+I am more suspicious because the user's last 30 days of sign-in history show activity only from Texas and from two known devices: the corporate laptop and the user's iPhone. The Romanian session came from an unknown device and used a different browser, operating system, location, and IP address than the user's normal activity.
+
+There could still be a legitimate explanation, such as the user receiving a new device that has not yet been registered or using a specialized VPN or tunneling service that changes the observed location.
+
+The MFA field also shows "Satisfied by claim in token" for both sign-ins. I would want to understand whether MFA was actually performed during the Romanian sign-in or whether the session reused a token that already contained an MFA claim.
+
+Next, I would investigate whether other users have authenticated from the Romanian IP address. I would also check whether that IP attempted failed or successful sign-ins against other accounts and review what resources were accessed before and after the successful sign-in.
