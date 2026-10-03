@@ -32,3 +32,39 @@ At this point, I would classify the activity as suspicious until I can gather mo
 5. I would want to see the OS, application, and resources being accessed and determine whether that activity is normal for the user.
 
 6. I would investigate what authentication methods were used for both successful sign-ins. If MFA was used, I would want to determine what MFA method was used, such as a physical security key, biometrics, or another authentication method, and compare the two sign-ins.
+
+## Evidence Received — Sign-In Details
+
+USER
+alex.wilson@contoso.com
+
+SIGN-IN #1
+Time: 08:42:17
+Location: Dallas, Texas, USA
+IP: 73.184.22.91
+Device ID: CORP-LT-2841
+Browser: Microsoft Edge 141
+OS: Windows 11
+Application: Microsoft 365
+MFA: Satisfied by claim in token
+Result: Success
+
+SIGN-IN #2
+Time: 08:53:46
+Location: Bucharest, Romania
+IP: 185.220.101.44
+Device ID: Unknown
+Browser: Chrome 140
+OS: Windows 10
+Application: Microsoft 365
+MFA: Satisfied by claim in token
+Result: Success
+
+USER HISTORY
+Last 30 days:
+- 87 successful sign-ins
+- Locations: Texas only
+- Known devices: CORP-LT-2841 and iPhone
+- No previous Romanian authentication
+
+## Evidence Analysis
