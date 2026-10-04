@@ -108,3 +108,37 @@ The group membership was added three months earlier by:
 `svc-helpdesk-automation@company.com`
 
 This creates an additional investigation lead. The next step is to determine why the service account added Alex to the group and whether the service account or automation process was also compromised or misconfigured.
+
+### Service Account Investigation
+
+I reviewed the activity of `svc-helpdesk-automation@company.com` around the time Alex Wilson was added to the `Finance Operations` group.
+
+The service account normally signs in from the company's internal automation server in Texas, and no unusual or foreign sign-ins were identified during the relevant timeframe.
+
+However, there was no helpdesk ticket requesting that Alex be added to `Finance Operations`.
+
+Further review showed that the service account made several unrelated access changes within the same 30-minute period:
+
+- Added Alex Wilson to `Finance Operations`
+- Added Sarah Patel to `HR Shared Mailbox Users`
+- Added Michael Grant to `Executive Reports Readers`
+- Removed Daniel Kim from `VPN-Standard`
+- Added Priya Shah to `Payroll Reports`
+
+Each affected user had a legitimate helpdesk ticket open that day, but none of the tickets requested the access change that was actually made.
+
+This suggests the activity may involve manipulation of the helpdesk or automation workflow rather than a direct compromise of the service account.
+
+### Helpdesk Investigation
+
+I reviewed the ticket history for the affected users and found that all five tickets were handled by the same helpdesk technician:
+
+`jason.reed@company.com`
+
+I also reviewed the sign-in history of the other affected users.
+
+No foreign or obviously suspicious sign-ins similar to Alex Wilson's were identified for Sarah Patel, Michael Grant, Priya Shah, or Daniel Kim.
+
+At this point, Jason Reed becomes an important investigation lead because he is the common factor across all of the tickets associated with unauthorized access changes.
+
+The next step is to investigate Jason Reed's account, workstation, permissions, and ticketing activity to determine whether his account was compromised or whether the workflow was intentionally manipulated.
