@@ -76,3 +76,35 @@ There could still be a legitimate explanation, such as the user receiving a new 
 The MFA field also shows "Satisfied by claim in token" for both sign-ins. I would want to understand whether MFA was actually performed during the Romanian sign-in or whether the session reused a token that already contained an MFA claim.
 
 Next, I would investigate whether other users have authenticated from the Romanian IP address. I would also check whether that IP attempted failed or successful sign-ins against other accounts and review what resources were accessed before and after the successful sign-in.
+
+### Additional Findings
+
+A review of the suspicious IP showed failed login attempts against multiple user accounts before a successful login to Alex Wilson's account. The IP had not previously appeared in the tenant and was associated with a commercial hosting/VPS provider.
+
+After the successful login, the account accessed Exchange Online and SharePoint Online within minutes.
+
+Exchange audit logs showed that the account:
+
+- Accessed 14 mailbox items
+- Searched for terms including "invoice," "wire," "bank," and "payment"
+- Accessed messages in the Finance shared mailbox
+- Created an inbox rule that moved messages containing "invoice" to the RSS Feeds folder
+- Added an external forwarding address
+- Granted itself FullAccess permissions to the Finance shared mailbox
+- Continued accessing messages from the Finance mailbox
+
+Based on this activity, I would classify this as a confirmed account compromise. The financial search terms, access to the Finance mailbox, external forwarding, and unauthorized permission changes show activity that does not match normal user behavior.
+
+My immediate response would be to contain Alex Wilson's account and escalate the incident to the Incident Response team. I would also want active sessions and tokens revoked, the account credentials reset, and the MFA configuration reviewed.
+
+### Permission Investigation
+
+Alex Wilson is not an Exchange Administrator, so I investigated how the account was able to grant itself FullAccess to the Finance shared mailbox.
+
+Alex is a member of the `Finance Operations` group, which has delegated permission to manage access to the Finance shared mailbox. His normal job responsibilities do not require membership in this group.
+
+The group membership was added three months earlier by:
+
+`svc-helpdesk-automation@company.com`
+
+This creates an additional investigation lead. The next step is to determine why the service account added Alex to the group and whether the service account or automation process was also compromised or misconfigured.
