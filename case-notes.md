@@ -142,3 +142,33 @@ No foreign or obviously suspicious sign-ins similar to Alex Wilson's were identi
 At this point, Jason Reed becomes an important investigation lead because he is the common factor across all of the tickets associated with unauthorized access changes.
 
 The next step is to investigate Jason Reed's account, workstation, permissions, and ticketing activity to determine whether his account was compromised or whether the workflow was intentionally manipulated.
+
+### Jason Reed Account Investigation
+
+I reviewed Jason Reed's sign-in activity to determine whether his account may have been compromised remotely.
+
+Jason's normal activity is from the corporate network in Texas using a registered Windows 11 device and Microsoft Edge.
+
+Three days before Alex Wilson was added to `Finance Operations`, Jason's account had an unusual successful sign-in with the following characteristics:
+
+- Source IP located in the Netherlands
+- IP associated with a commercial VPS provider
+- Linux operating system
+- Google Chrome
+- Unregistered device
+- MFA marked as "previously satisfied in token"
+
+The sign-in was preceded by two failed password attempts and then succeeded two minutes later.
+
+The session remained active for approximately six hours and accessed:
+
+- Outlook
+- SharePoint
+- Teams
+- The company helpdesk portal
+
+No new MFA method or device was registered during this session.
+
+### Phishing Investigation
+
+Review of Jason Reed's email activity found that
