@@ -171,4 +171,22 @@ No new MFA method or device was registered during this session.
 
 ### Phishing Investigation
 
-Review of Jason Reed's email activity found that
+Review of Jason Reed's email activity found that he clicked a Microsoft 365 session-expiration warning email the day before the suspicious sign-in.
+
+The link redirected to:
+
+`login-microsoftonline-security.com`
+
+The site imitated a Microsoft sign-in page.
+
+Based on the current evidence, my working hypothesis is that Jason interacted with a phishing page that may have resulted in theft of an authenticated Microsoft 365 session or token. That stolen session may have been reused from the Netherlands VPS, allowing access without a fresh MFA challenge.
+
+The phishing message was delivered to 17 employees:
+
+- 6 opened the message
+
+- 3 clicked the link
+
+- Jason Reed was one of the users who clicked
+
+The next step is to investigate the other users who clicked the phishing link to determine whether their accounts also show suspicious authentication or activity.
